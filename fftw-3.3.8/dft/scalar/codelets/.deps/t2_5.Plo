@@ -1,0 +1,86 @@
+t2_5.lo: t2_5.c ../../../dft/codelet-dft.h ../../../kernel/ifftw.h \
+  ../../../config.h \
+  /Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/libcxx/stdlib.h \
+  /Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/libcxx/__config \
+  /Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/compat/stdlib.h \
+  /Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/libc/stdlib.h \
+  /Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/libc/features.h \
+  /Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/lib/libc/musl/arch/emscripten/bits/alltypes.h \
+  /Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/libc/alloca.h \
+  /Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/compat/stdarg.h \
+  /Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/libc/stdarg.h \
+  /Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/libcxx/stddef.h \
+  /Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/libc/stddef.h \
+  /Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/libcxx/limits.h \
+  /Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/libc/limits.h \
+  /Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/lib/libc/musl/arch/emscripten/bits/limits.h \
+  /Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/libc/sys/types.h \
+  /Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/libc/endian.h \
+  /Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/libcxx/stdint.h \
+  /Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/libc/stdint.h \
+  /Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/lib/libc/musl/arch/emscripten/bits/stdint.h \
+  /Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/libc/sys/select.h \
+  /Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/libcxx/inttypes.h \
+  /Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/libc/inttypes.h \
+  /Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/libc/sys/time.h \
+  /Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/compat/time.h \
+  /Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/libc/time.h \
+  ../../../dft/scalar/t.h
+
+../../../dft/codelet-dft.h:
+
+../../../kernel/ifftw.h:
+
+../../../config.h:
+
+/Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/libcxx/stdlib.h:
+
+/Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/libcxx/__config:
+
+/Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/compat/stdlib.h:
+
+/Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/libc/stdlib.h:
+
+/Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/libc/features.h:
+
+/Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/lib/libc/musl/arch/emscripten/bits/alltypes.h:
+
+/Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/libc/alloca.h:
+
+/Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/compat/stdarg.h:
+
+/Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/libc/stdarg.h:
+
+/Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/libcxx/stddef.h:
+
+/Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/libc/stddef.h:
+
+/Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/libcxx/limits.h:
+
+/Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/libc/limits.h:
+
+/Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/lib/libc/musl/arch/emscripten/bits/limits.h:
+
+/Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/libc/sys/types.h:
+
+/Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/libc/endian.h:
+
+/Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/libcxx/stdint.h:
+
+/Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/libc/stdint.h:
+
+/Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/lib/libc/musl/arch/emscripten/bits/stdint.h:
+
+/Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/libc/sys/select.h:
+
+/Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/libcxx/inttypes.h:
+
+/Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/libc/inttypes.h:
+
+/Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/libc/sys/time.h:
+
+/Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/compat/time.h:
+
+/Users/cynthiahe/Documents/cs4621/emsdk/upstream/emscripten/system/include/libc/time.h:
+
+../../../dft/scalar/t.h:
