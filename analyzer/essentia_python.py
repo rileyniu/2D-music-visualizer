@@ -71,6 +71,6 @@ pool.add('MIDIpitch', midi_pitch)
 pool.add('pitch', pitch_values)
 pool.add('beats', beats)
  
-output = YamlOutput(format = 'json') # use "format = 'json'" for JSON output
-output = YamlOutput(filename = 'output.json')
+#output = YamlOutput(format = 'json') # use "format = 'json'" for JSON output
+output = YamlOutput(filename = 'output')
 output(pool)
