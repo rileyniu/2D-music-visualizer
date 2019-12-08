@@ -13,7 +13,7 @@ pool = essentia.Pool();
 # Compute all features, aggregate only 'mean' and 'stdev' statistics for all low-level, rhythm and tonal frame features
 features, features_frames = es.MusicExtractor(lowlevelStats=['mean', 'stdev'],
                                               rhythmStats=['mean', 'stdev'],
-                                              tonalStats=['mean', 'stdev'])('flamenco.wav')
+                                              tonalStats=['mean', 'stdev'])('../data/../data/flamenco.wav')
 
 # See all feature names in the pool in a sorted order
 print(sorted(features.descriptorNames()))
@@ -36,7 +36,7 @@ print("Key/scale estimation (using a profile specifically suited for electronic 
 # BPM Detection
 
 # Loading audio file
-audio = MonoLoader(filename='flamenco.wav')()
+audio = MonoLoader(filename='../data/flamenco.wav')()
 
 # # Compute beat positions and BPM
 rhythm_extractor = RhythmExtractor2013(method="multifeature")
@@ -49,7 +49,7 @@ bpm, beats, beats_confidence, _, beats_intervals = rhythm_extractor(audio)
 # Melody Detection 
 
 # Load audio file; it is recommended to apply equal-loudness filter for PredominantPitchMelodia
-loader = EqloudLoader(filename='flamenco.wav', sampleRate=44100)
+loader = EqloudLoader(filename='../data/flamenco.wav', sampleRate=44100)
 audio = loader()
 #print("Duration of the audio sample [sec]:")
 #print(len(audio)/44100.0)
