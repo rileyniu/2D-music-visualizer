@@ -16,7 +16,7 @@ pool = essentia.Pool();
 # Compute all features, aggregate only 'mean' and 'stdev' statistics for all low-level, rhythm and tonal frame features
 features, features_frames = es.MusicExtractor(lowlevelStats=['mean', 'stdev'],
                                               rhythmStats=['mean', 'stdev'],
-                                              tonalStats=['mean', 'stdev'])('../data/flamenco.wav')
+                                              tonalStats=['mean', 'stdev'])('../data/wolfram.wav')
 
 
 # You can then access particular values in the pools:
@@ -38,7 +38,7 @@ print("Key/scale estimation (using a profile specifically suited for electronic 
 
 # Loading audio file
 
-audio = MonoLoader(filename='../data/flamenco.wav')()
+audio = MonoLoader(filename='../data/wolfram.wav')()
 
 # # Compute beat positions and BPM
 rhythm_extractor = RhythmExtractor2013(method="multifeature")
@@ -57,13 +57,14 @@ danceability, dfa = danceability_extractor(audio)
 # Melody Detection 
 
 # Load audio file; it is recommended to apply equal-loudness filter for PredominantPitchMelodia
-loader = EqloudLoader(filename='../data/flamenco.wav', sampleRate=44100)
+loader = EqloudLoader(filename='../data/wolfram.wav', sampleRate=44100)
 audio = loader()
 #print("Duration of the audio sample [sec]:")
 #print(len(audio)/44100.0)
 
 # frameSize = the frame size for computing pitch salience
 # hop size = the hop size with which the pitch salience function was computed
+# pitch_values = the estimated pitch values [Hz]
 pitch_extractor = PredominantPitchMelodia(frameSize=2048, hopSize=1024)
 pitch_values, pitch_confidence = pitch_extractor(audio)
 
@@ -71,7 +72,7 @@ midi_extractor = PitchContourSegmentation(hopSize=1024)
 onset, duration, midi_pitch = midi_extractor(pitch_values, audio)
 
 # Pitch is estimated on frames. Compute frame time positions
-pitch_times = numpy.linspace(0.0,len(audio)/44100.0,len(pitch_values) )
+pitch_times = numpy.linspace(0.0,len(audio)/44100.0,len(pitch_values))
 
 #Storing in Pool
 pool.add('MIDIduration', duration)
