@@ -1,4 +1,3 @@
-# This is how the audio we want to process sounds like
 import IPython
 import numpy
 import json 
@@ -7,16 +6,18 @@ import essentia.standard as es
 from essentia.standard import *
 from pylab import plot, show, figure, imshow
 import matplotlib.pyplot as plt
+from midi2audio import midi2audio
+
+fs = midi2audio.FluidSynth()
+fs.midi_to_audio('input.mid', 'output.wav')
 
 pool = essentia.Pool(); 
 
 # Compute all features, aggregate only 'mean' and 'stdev' statistics for all low-level, rhythm and tonal frame features
 features, features_frames = es.MusicExtractor(lowlevelStats=['mean', 'stdev'],
                                               rhythmStats=['mean', 'stdev'],
-                                              tonalStats=['mean', 'stdev'])('../data/../data/flamenco.wav')
+                                              tonalStats=['mean', 'stdev'])('../data/flamenco.wav')
 
-# See all feature names in the pool in a sorted order
-print(sorted(features.descriptorNames()))
 
 # You can then access particular values in the pools:
 print("Filename:", features['metadata.tags.file_name'])
@@ -36,6 +37,7 @@ print("Key/scale estimation (using a profile specifically suited for electronic 
 # BPM Detection
 
 # Loading audio file
+
 audio = MonoLoader(filename='../data/flamenco.wav')()
 
 # # Compute beat positions and BPM
@@ -45,6 +47,12 @@ bpm, beats, beats_confidence, _, beats_intervals = rhythm_extractor(audio)
 # print("BPM:", bpm)
 # print("Beat positions (sec.):", beats)
 # print("Beat estimation confidence:", beats_confidence)
+
+beat_volume_extractor = BeatsLoudness(beats=beats)
+beats_loudness, beats_loudness_band_ratio = beat_volume_extractor(audio)
+
+danceability_extractor = Danceability()
+danceability, dfa = danceability_extractor(audio)
 
 # Melody Detection 
 
@@ -69,8 +77,9 @@ pitch_times = numpy.linspace(0.0,len(audio)/44100.0,len(pitch_values) )
 pool.add('MIDIduration', duration)
 pool.add('MIDIpitch', midi_pitch)
 pool.add('pitch', pitch_values)
+pool.add('danceability', danceability)
+pool.add('beat-loudness', beats_loudness)
 pool.add('beats', beats)
  
-output = YamlOutput(format = 'json') # use "format = 'json'" for JSON output
-output = YamlOutput(filename = 'output.json')
-output(pool)
+output = YamlOutput(filename = 'output.json') # use "format = 'json'" for JSON output
+output(pool)      
