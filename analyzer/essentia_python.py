@@ -8,8 +8,8 @@ from pylab import plot, show, figure, imshow
 import matplotlib.pyplot as plt
 from midi2audio import midi2audio
 
-fs = midi2audio.FluidSynth()
-fs.midi_to_audio('input.mid', 'output.wav')
+#fs = midi2audio.FluidSynth()
+#fs.midi_to_audio('input.mid', 'output.wav')
 
 pool = essentia.Pool(); 
 
@@ -37,34 +37,26 @@ print("Key/scale estimation (using a profile specifically suited for electronic 
 # BPM Detection
 
 # Loading audio file
-
 audio = MonoLoader(filename='../data/wolfram.wav')()
 
 # # Compute beat positions and BPM
 rhythm_extractor = RhythmExtractor2013(method="multifeature")
 bpm, beats, beats_confidence, _, beats_intervals = rhythm_extractor(audio)
 
-# print("BPM:", bpm)
-# print("Beat positions (sec.):", beats)
-# print("Beat estimation confidence:", beats_confidence)
-
 beat_volume_extractor = BeatsLoudness(beats=beats)
 beats_loudness, beats_loudness_band_ratio = beat_volume_extractor(audio)
 
+# Danceability Detection
 danceability_extractor = Danceability()
 danceability, dfa = danceability_extractor(audio)
 
-# Melody Detection 
-
+# Melody Detection
 # Load audio file; it is recommended to apply equal-loudness filter for PredominantPitchMelodia
 loader = EqloudLoader(filename='../data/wolfram.wav', sampleRate=44100)
 audio = loader()
 #print("Duration of the audio sample [sec]:")
 #print(len(audio)/44100.0)
 
-# frameSize = the frame size for computing pitch salience
-# hop size = the hop size with which the pitch salience function was computed
-# pitch_values = the estimated pitch values [Hz]
 pitch_extractor = PredominantPitchMelodia(frameSize=2048, hopSize=1024)
 pitch_values, pitch_confidence = pitch_extractor(audio)
 
@@ -82,5 +74,5 @@ pool.add('danceability', danceability)
 pool.add('beat-loudness', beats_loudness)
 pool.add('beats', beats)
  
-output = YamlOutput(filename = 'output.json') # use "format = 'json'" for JSON output
+output = YamlOutput(filename = 'output.json',format='json',indent=4,writeVersion=False) # use "format = 'json'" for JSON output
 output(pool)      
