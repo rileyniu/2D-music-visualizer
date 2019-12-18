@@ -34,7 +34,7 @@ import subprocess
 
 __all__ = ['FluidSynth']
 
-DEFAULT_SOUND_FONT = '~/.fluidsynth/default_sound_font.sf2'
+DEFAULT_SOUND_FONT = '~/.fluidsynth/acoustic_piano.sf2'
 DEFAULT_SAMPLE_RATE = 44100
 
 class FluidSynth():
