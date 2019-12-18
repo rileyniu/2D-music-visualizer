@@ -22,7 +22,7 @@
             src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
     </script> -->
 </head>
-<body>
+<body style="background-color: black;">
 <div class="container">
     <h1>Fractissimo Demo</h2>
     <div id="content">
@@ -59,6 +59,7 @@
     uniform vec2 u_resolution;
     uniform float u_time;
     uniform float u_pitch;
+
 
     // utility functions
     vec2 toPolar(vec2 pos){
@@ -128,39 +129,31 @@
     }
 
     // blend two shapes
-    float drawShape(vec2 center, vec2 pos, float radius, float a){
-      // crossfade two shapes using time as ratio. probably dont need sin(time) but
-      // some continuous function of musical attribute that varies along time
+    float drawShape(vec2 center, vec2 pos, float radius){
+      // crossfade two shapes using time as ratio.
       float fadeSpeed = 0.8; // this should be something we map to
       float crossfadeIntensity = 0.5;
       float shapeRatio = sin(u_time * fadeSpeed)*crossfadeIntensity+0.2;
       float result;
       float result2;
-      // if(a > 0.5)
-          result = mix(circle(center, pos, radius),
-                  triangle(center, pos, radius),
-                  shapeRatio);
-      // else
-          result2 = mix(skeleton(center, pos, radius),
-                  hexagram(center, pos, radius),
-                  shapeRatio);
+      result = mix(circle(center, pos, radius),
+              skeleton(center, pos, radius),
+              shapeRatio);
+      result2 = mix(skeleton(center, pos, radius),
+              hexagram(center, pos, radius),
+              shapeRatio);
       return mix(result, result2, u_pitch+0.1);
     }
 
     // koch fractal algorithm
     float koch(vec2 pos){
+      // float pitch = u_pitch+0.01;
       // koch fractal iterations
       const int n = 5;
-
-      float radius = 50.0;
+      float radius = 70.0;
       vec2 center = vec2(0.0);
-      float a;
-      if(u_pitch*255.0/2.0 == 0.0)
-          a = 0.8;
-      else
-          a = 0.1;
-      float c = drawShape(center,pos,radius,a);
 
+      float c = drawShape(center,pos,radius);
 
       for(int i = 0;i<n;i++)
         {
@@ -169,23 +162,23 @@
           float index = floor(polarAngle/(PI/3.0))+0.5;
           center += (radius*4.0/3.0)*vec2(cos(index*PI/3.0),sin(index*PI/3.0));
           radius /= 4.0*u_pitch;
-          c += drawShape(center,pos,radius,a);
+          c += drawShape(center,pos,radius);
       }
       return c;
     }
 
     void main() {
       // rotation speed
+      // u_pitch=u_pitch+0.1;
 
       float speed = 0.5;
-      // float pitch = u_pitch/255.0;
-      vec2 pos = 100.0*(2.0*gl_FragCoord.xy - u_resolution.xy)/u_resolution.y;
+      vec2 pos = 180.0*(2.0*gl_FragCoord.xy - u_resolution.xy)/u_resolution.y;
       pos = rotate(pos,u_time*speed)*(1.0+0.2*sin(u_time));
       // alpha
      	float c = koch(pos)*(sin(u_time)*0.2+0.35);
       // color
       vec3 backgroundCol = 0.3*vec3(u_pitch,u_pitch,u_pitch)+vec3(0.1,0.0,0.1);
-      vec3 fractalCol =vec3(0.4,0.8,0.88);
+      vec3 fractalCol = vec3(0.4,0.7,0.6);
       vec3 col = backgroundCol*pow(1.5-length(geom_texCoord-vec2(0.5)),2.0) +
           fractalCol*c;
 
