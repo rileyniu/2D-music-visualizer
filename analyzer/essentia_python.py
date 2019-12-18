@@ -6,11 +6,11 @@ import essentia.standard as es
 from essentia.standard import *
 from pylab import plot, show, figure, imshow
 import matplotlib.pyplot as plt
-#from midi2audio import midi2audio
+from midi2audio import midi2audio
 
 def essentia_midi(): 
-      #fs = midi2audio.FluidSynth()
-      #fs.midi_to_audio('input.mid', 'output.wav')
+      fs = midi2audio.FluidSynth()
+      fs.midi_to_audio('input.mid', 'output.wav')
 
       pool = essentia.Pool(); 
 
