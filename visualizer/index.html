@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Fractissimo</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/@magenta/music@^1.0.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@magenta/music@1.0.3"></script>
+    <link href='https://fonts.googleapis.com/css?family=Codystar' rel='stylesheet'>
+  </head>
+
+  <body>
+    <div class='content' id='wait'>Put on headphones. We'll wait.</div>
+    <div class='content' id='start' onclick="start()">CLICK TO GET YOUR TRIO OF THE DAY</div>
+    <div class='content' id='playing'>
+      <marquee scrollamount=15>Visualize TRIOS</marquee>
+      <marquee scrollamount=15 direction=right >Visualize TRIOS</marquee>
+      <div class='button' id='next' onclick="sampleAndPlayForever()">NEXT SONG</div> 
+      <marquee behavior=alternate id='count' direction=right>0 TRIOS</marquee>
+      <div class='button' onclick="stop()">END PLAYING</div>
+      <marquee scrollamount=15>Visualize TRIOS</marquee>
+      <marquee scrollamount=15 direction=right>Visualize TRIOS</marquee>
+  
+    </div>
+  </body>
+  
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
