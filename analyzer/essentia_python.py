@@ -6,18 +6,18 @@ import essentia.standard as es
 from essentia.standard import *
 from pylab import plot, show, figure, imshow
 import matplotlib.pyplot as plt
-from midi2audio import midi2audio
+from analyzer.midi2audio import midi2audio
 
 def essentia_midi(): 
       fs = midi2audio.FluidSynth()
-      fs.midi_to_audio('input.mid', 'output.wav')
+      fs.midi_to_audio('./analyzer/input.mid', './analyzer/output.wav')
 
       pool = essentia.Pool(); 
 
       # Compute all features, aggregate only 'mean' and 'stdev' statistics for all low-level, rhythm and tonal frame features
       features, features_frames = es.MusicExtractor(lowlevelStats=['mean', 'stdev'],
                                                 rhythmStats=['mean', 'stdev'],
-                                                tonalStats=['mean', 'stdev'])('output.wav')
+                                                tonalStats=['mean', 'stdev'])('./analyzer/output.wav')
 
       # You can then access particular values in the pools:
       print("Filename:", features['metadata.tags.file_name'])
@@ -37,7 +37,7 @@ def essentia_midi():
       # BPM Detection
 
       # Loading audio file
-      audio = MonoLoader(filename='output.wav')()
+      audio = MonoLoader(filename='./analyzer/output.wav')()
 
       # # Compute beat positions and BPM
       rhythm_extractor = RhythmExtractor2013(method="multifeature")
@@ -52,7 +52,7 @@ def essentia_midi():
 
       # Melody Detection
       # Load audio file; it is recommended to apply equal-loudness filter for PredominantPitchMelodia
-      loader = EqloudLoader(filename='output.wav', sampleRate=44100)
+      loader = EqloudLoader(filename='./analyzer/output.wav', sampleRate=44100)
       audio = loader()
       print("Duration of the audio sample [sec]:")
       print(len(audio)/44100.0)
