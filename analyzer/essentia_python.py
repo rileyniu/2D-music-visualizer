@@ -6,12 +6,8 @@ import essentia.standard as es
 from essentia.standard import *
 from pylab import plot, show, figure, imshow
 import matplotlib.pyplot as plt
-from midi2audio import midi2audio
 
 def essentia_midi(file): 
-      #fs = midi2audio.FluidSynth()
-      #fs.midi_to_audio('./analyzer/input.mid', './analyzer/output.wav')
-
       pool = essentia.Pool(); 
 
       # Compute all features, aggregate only 'mean' and 'stdev' statistics for all low-level, rhythm and tonal frame features
