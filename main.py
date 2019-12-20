@@ -6,7 +6,7 @@ import os
 import subprocess
 
 UPLOAD_FOLDER = './analyzer'
-ALLOWED_EXTENSIONS = {'wav', 'mp3', 'aiff', 'flac'}
+ALLOWED_EXTENSIONS = {'wav', 'mp3', 'm4a', 'aiff', 'flac'}
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
